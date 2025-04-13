@@ -3,7 +3,7 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-100 text-gray-600 text-sm text-center py-4 mt-10 shadow-inner">
+    <footer className="bg-[#172842]  text-white text-sm text-center py-4 mt-10 shadow-inner">
   <div className="flex flex-col items-center justify-center gap-2 sm:flex-row sm:justify-between sm:px-10">
     <p className="">&copy; {new Date().getFullYear()} Arnav Raj. All rights reserved.</p>
     <a
