@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
 import { TodoProvider } from "./assets/Contexts";
-import TodoForm from "./assets/Components/TodoForm";
-import AllToDo from "./assets/Components/TodoItem";
+import TodoForm from "./assets/Components/TodoForm.jsx";
 import "./input.css";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 const App = () => {

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useTodo } from "../Contexts";
-import TodoItem from "./TodoItem";
+import TodoItem from "./TodoItem.jsx";
 function Done({ todo }) {
     const {todos} = useTodo()
        
@@ -16,7 +16,7 @@ function Done({ todo }) {
           </li>
         ))
       ) : (
-        <p className="text-gray-400 text-center">All todos are Completed!🥳</p>
+        <p className="text-gray-400 text-center">No Completed todos yet!🥵</p>
       )}
     </ul>
   </div>
