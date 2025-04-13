@@ -5,7 +5,7 @@ import TodoItem from './TodoItem'
 const AllToDo = () => {
     const {todos}=useTodo()
   return (
-    <div className="">
+    <div className="w-full">
     <ul>
       {todos.length > 0 ? (
         todos.map((todo) => (

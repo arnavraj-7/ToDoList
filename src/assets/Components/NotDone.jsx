@@ -7,7 +7,7 @@ function Done({ todo }) {
       const todos_C=todos.filter((todo)=>todo.Completed==false)
 
   return (
-    <div className="flex flex-wrap gap-y-3">
+    <div className="gap-y-3 w-full">
     <ul>
       {todos_C.length > 0 ? (
         todos_C.map((todo) => (

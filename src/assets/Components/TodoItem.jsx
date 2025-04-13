@@ -11,11 +11,11 @@ function TodoItem({ todo }) {
   const { updateTodo, toggleCompleted, deleteTodo } = useTodo();
   return (
     <div
-      className={`hover:scale-105 duration-300 ease-in-out justify-between relative flex border border-black/10 rounded-lg px-3 py-1.5 gap-x-3 shadow-sm shadow-white/50 w-150 my-4 text-black ${
+      className={`hover:scale-105 duration-300 ease-in-out justify-between relative flex border border-black/10 rounded-lg px-3 py-1.5 gap-x-3 shadow-sm shadow-white/50 my-4 text-black w-full ${
         todo.Completed ? "bg-[#c6e9a7]" : "bg-[#b9a6c7]"
       }`}
     >
-      <div className="flex gap-3">
+      <div className="flex gap-3 ">
         <div>
         <input
           type="checkbox"
