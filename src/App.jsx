@@ -4,10 +4,11 @@ import { TodoProvider } from "./assets/Contexts";
 import TodoForm from "./assets/Components/TodoForm.jsx";
 import "./index.css";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import Footer from "./assets/Components/Footer.jsx";
 const App = () => {
   const [todos, setTodos] = useState([]);
   const isInitialMount = useRef(true);
-  const Navigate=useNavigate();
+  const Navigate = useNavigate();
   // Load todos from localStorage on component mount
   useEffect(() => {
     const td = localStorage.getItem("storeTodo");
@@ -73,33 +74,40 @@ const App = () => {
           <div className="mb-4">
             <TodoForm />
           </div>
-          <div  className="flex justify-evenly">
-          <div>
-            <button className="h-10 w-30 rounded bg-yellow-600 hover:scale-110 duration-150 ease-intext-white"onClick={(e)=>Navigate("AllToDo")}>
-              All ToDos📃
-            </button>
-          </div>
-          <div>
-            <button className="h-10 w-30 rounded bg-green-600 hover:scale-110 duration-150 ease-intext-white" onClick={(e)=>Navigate("Done")}>
-            COMPLETED✅
-            </button>
-          </div>
-          
-          <div>
-            <button className="h-10 w-30 rounded
-            hover:scale-110 duration-150 ease-in bg-red-600 text-white" onClick={(e)=>Navigate("NotDone")}>
+          <div className="flex justify-evenly">
+            <div>
+              <button
+                className="h-10 w-30 rounded bg-yellow-600 hover:scale-110 duration-150 ease-intext-white"
+                onClick={(e) => Navigate("AllToDo")}
+              >
+                All ToDos📃
+              </button>
+            </div>
+            <div>
+              <button
+                className="h-10 w-30 rounded bg-green-600 hover:scale-110 duration-150 ease-intext-white"
+                onClick={(e) => Navigate("Done")}
+              >
+                COMPLETED✅
+              </button>
+            </div>
 
-              to be DONE⌛
-             
-            </button>
+            <div>
+              <button
+                className="h-10 w-30 rounded
+            hover:scale-110 duration-150 ease-in bg-red-600 text-white"
+                onClick={(e) => Navigate("NotDone")}
+              >
+                to be DONE⌛
+              </button>
+            </div>
           </div>
+          <div className="m-4 flex ">
+            <Outlet />
           </div>
-    <div className="m-4 flex ">
-
-              <Outlet/>
-    </div>
         </div>
       </div>
+      <Footer />
     </TodoProvider>
   );
 };
