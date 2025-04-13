@@ -5,7 +5,4 @@ import tailwindcss from "@tailwindcss/vite"
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  server: {
-    historyApiFallback: true,  // Ensures React Router handles routing on page reload
-  },
 })
