@@ -8,9 +8,9 @@ import AllToDo from './assets/Components/AllToDo.jsx';
 import { BrowserRouter, createBrowserRouter, createRoutesFromElements, Route, RouterProvider, Routes } from 'react-router-dom';
 const router=createBrowserRouter(createRoutesFromElements(
   <Route path="/" element={<App/>}>
-    <Route path='/AllTodo' element={<AllToDo/>}/>
-    <Route path='/Done' element={<Done/>}/>
-    <Route path='/NotDone' element={<NotDone/>}/>
+    <Route path='AllToDo' element={<AllToDo/>}/>
+    <Route path='Done' element={<Done/>}/>
+    <Route path='NotDone' element={<NotDone/>}/>
   </Route>
 ))
 createRoot(document.getElementById('root')).render(
