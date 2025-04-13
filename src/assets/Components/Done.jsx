@@ -16,7 +16,7 @@ function Done({ todo }) {
           </li>
         ))
       ) : (
-        <p className="text-gray-400 text-center">All todos are Completed!🥳</p>
+        <p className="text-gray-400 text-center">No Completed todos yet!🥵</p>
       )}
     </ul>
   </div>

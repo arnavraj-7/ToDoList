@@ -74,34 +74,50 @@ const App = () => {
           <div className="mb-4">
             <TodoForm />
           </div>
-          <div className="flex justify-evenly">
-            <div>
+          {/* <div className="flex md:justify-evenly justify-center items-center">
               <button
-                className="h-10 w-30 rounded bg-yellow-600 hover:scale-110 duration-150 ease-intext-white"
+                className="h-12 w-32 rounded-l md:rounded bg-yellow-600 hover:bg-yellow-700  md:hover:scale-110 duration-300 ease-in-out text-white border-0"
                 onClick={(e) => Navigate("AllToDo")}
               >
-                All ToDos📃
+                ALL TO-DOs
               </button>
-            </div>
-            <div>
               <button
-                className="h-10 w-30 rounded bg-green-600 hover:scale-110 duration-150 ease-intext-white"
+                className="h-12 w-32  md:rounded rounded-none bg-green-600 hover:bg-green-700 md:hover:scale-110 duration-300 ease-in text-white border-0"
                 onClick={(e) => Navigate("Done")}
               >
-                COMPLETED✅
+                COMPLETED
               </button>
-            </div>
-
-            <div>
               <button
-                className="h-10 w-30 rounded
-            hover:scale-110 duration-150 ease-in bg-red-600 text-white"
-                onClick={(e) => Navigate("NotDone")}
+                className="h-12 w-32 rounded-r md:rounded border-0
+            md:hover:scale-110 duration-300 ease-in-out bg-red-600 hover:bg-red-700 text-white"
+                onClick={(e) => Navigate("NotDone")}  
               >
-                to be DONE⌛
+                TO BE DONE
               </button>
-            </div>
-          </div>
+          </div> */}
+          <div className="flex md:justify-evenly justify-center items-center gap-x-2">
+  <button
+    className="h-12 w-32 rounded bg-yellow-600 hover:bg-yellow-700 md:hover:scale-110 duration-300 ease-in-out text-white text-sm leading-none flex items-center justify-center text-center"
+    onClick={() => Navigate("AllToDo")}
+  >
+    ALL TO-DOs📃
+  </button>
+
+  <button
+    className="h-12 w-32 rounded bg-green-600 hover:bg-green-700 md:hover:scale-110 duration-300 ease-in text-white text-sm leading-none flex items-center justify-center text-center"
+    onClick={() => Navigate("Done")}
+  >
+    COMPLETED✅
+  </button>
+
+  <button
+    className="h-12 w-32 rounded bg-red-600 hover:bg-red-700 md:hover:scale-110 duration-300 ease-in-out text-white text-sm leading-none flex items-center justify-center text-center"
+    onClick={() => Navigate("NotDone")}
+  >
+    TO BE DONE⌛
+  </button>
+</div>
+
           <div className="mt-4 flex flex-1">
             <Outlet />
           </div>
