@@ -102,7 +102,7 @@ const App = () => {
               </button>
             </div>
           </div>
-          <div className="m-4 flex ">
+          <div className="mt-4 flex ">
             <Outlet />
           </div>
         </div>
