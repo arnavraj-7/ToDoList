@@ -11,7 +11,7 @@ function Done({ todo }) {
     <ul>
       {todos_C.length > 0 ? (
         todos_C.map((todo) => (
-          <li key={todo.todoID}>
+          <li key={todo._id}>
             <TodoItem todo={todo} />
           </li>
         ))

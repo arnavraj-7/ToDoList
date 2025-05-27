@@ -9,9 +9,32 @@ function TodoForm() {
    const [task,settask]=useState("")
 
    const handleSubmit=(e)=>{
-    e.preventDefault()
-    addTodo(task)
-    settask("")
+       e.preventDefault();
+    const newTodo={
+        todo:task,
+        Completed:false,
+        isEditable:true,
+    }
+    async function fetchTodos() {
+    try {
+        const res =await fetch("http://localhost:5000/AllToDo",{
+            method:'POST',
+            headers:{
+                "Content-Type":"application/json",
+            },
+            body: JSON.stringify(newTodo)
+        },
+    )
+    const savedTodo = await res.json(); // ✅ Parse the response JSON
+      addTodo(savedTodo);
+       Navigate("/AllToDo");
+    settask("");
+    } catch (error) {
+        console.log("Error occured:"+error);
+    }
+}
+    fetchTodos();
+    
 }
     return (
         <form  className="flex" onSubmit={handleSubmit}>
@@ -25,7 +48,7 @@ function TodoForm() {
                 }
                 }
                     />
-            <button type="submit" className="rounded-r-lg px-3 py-1 bg-green-600 text-white shrink-0 hover:bg-green-800 duration-150 ease-in hover:scale-110 hover:rounded-l-lg"onClick={(e)=>Navigate("AllToDo")}>Add
+            <button type="submit" className="rounded-r-lg px-3 py-1 bg-green-600 text-white shrink-0 hover:bg-green-800 duration-150 ease-in hover:scale-110 hover:rounded-l-lg">Add
             </button>
         </form>
     );

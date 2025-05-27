@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { use, useEffect, useRef, useState } from "react";
 
 import { TodoProvider } from "./assets/Contexts";
 import TodoForm from "./assets/Components/TodoForm.jsx";
@@ -9,53 +9,59 @@ const App = () => {
   const [todos, setTodos] = useState([]);
   const isInitialMount = useRef(true);
   const Navigate = useNavigate();
+  useEffect(()=>{
+  const fetchtodos= async()=>{
+    try{
+      const res=await fetch("http://localhost:5000/AllDoTo");
+      const data=await res.json();
+      setTodos(data);
+      console.log("Fetched todos:", data);
+    }catch(error){
+      console.error("Error fetching todos:", error); 
+    }
+  }
+  fetchtodos()
+  },[])
   // Load todos from localStorage on component mount
-  useEffect(() => {
-    const td = localStorage.getItem("storeTodo");
-    console.log("Fetched from localStorage:", td);
-    if (td) {
-      setTodos(JSON.parse(td));
-    }
-  }, []);
-  useEffect(() => {
-    if (isInitialMount.current) {
-      isInitialMount.current = false;
-      return; // 🚫 Skip first effect run
-    } else {
-      localStorage.setItem("storeTodo", JSON.stringify(todos));
-    }
-  }, [todos]);
+  // useEffect(() => {
+  //   const td = localStorage.getItem("storeTodo");
+  //   console.log("Fetched from localStorage:", td);
+  //   if (td) {
+  //     setTodos(JSON.parse(td));
+  //   }
+  // }, []);
+  // useEffect(() => {
+  //   if (isInitialMount.current) {
+  //     isInitialMount.current = false;
+  //     return;
+  //   }
+  //   // Save todos to localStorage whenever todos change
+   
+  // }, [todos]);
 
-  useEffect(() => {
-    console.log(
-      "Current todos:",
-      todos.map((t) => t)
-    );
-  }, [todos]);
+
 
   const addTodo = (todo) => {
-    const newtodo = {
-      todoID: crypto.randomUUID(),
-      Completed: false,
-      isTodoEditable: false,
-      todo: todo,
-    };
-    setTodos((prev) => [newtodo, ...prev]);
+    if(todo==""){
+      return 
+    }
+
+    setTodos((prev) => [todo, ...prev]);
   };
 
-  const updateTodo = (todoID, todo) => {
+  const updateTodo = (_id, todo) => {
     setTodos((prev) =>
-      prev.map((prevTodo) => (prevTodo.todoID === todoID ? todo : prevTodo))
+      prev.map((prevTodo) => (prevTodo._id === todo._id ? todo : prevTodo))
     );
   };
-  const deleteTodo = (todoID) => {
-    setTodos((prev) => prev.filter((Todo) => Todo.todoID !== todoID));
+  const deleteTodo = (_id) => {
+    setTodos((prev) => prev.filter((Todo) => Todo._id !== _id));
   };
 
-  const toggleCompleted = (todoID) => {
+  const toggleCompleted = (_id) => {
     setTodos((prev) =>
       prev.map((todo) =>
-        todo.todoID == todoID ? { ...todo, Completed: !todo.Completed } : todo
+        todo._id == _id ? { ...todo, Completed: !todo.Completed } : todo
       )
     );
   };
@@ -95,7 +101,7 @@ const App = () => {
                 TO BE DONE
               </button>
           </div> */}
-          <div className="flex md:justify-evenly justify-center items-center gap-x-2">
+          <div className="flex md:justify-evenly justify-center items-center">
   <button
     className="h-12 w-32 rounded bg-yellow-600 hover:bg-yellow-700 md:hover:scale-110 duration-300 ease-in-out text-white text-sm leading-none flex items-center justify-center text-center"
     onClick={() => Navigate("AllToDo")}

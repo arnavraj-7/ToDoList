@@ -9,8 +9,8 @@ const AllToDo = () => {
     <ul>
       {todos.length > 0 ? (
         todos.map((todo) => (
-          <li key={todo.todoID}>
-            <TodoItem todo={todo} />
+          <li key={todo._id}>
+            {<TodoItem todo={todo}/>}
           </li>
         ))
       ) : (

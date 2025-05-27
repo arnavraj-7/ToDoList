@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useTodo } from "../Contexts";
 import TodoItem from "./TodoItem.jsx";
-function Done({ todo }) {
+function NotDone() {
     const {todos} = useTodo()
        
       const todos_C=todos.filter((todo)=>todo.Completed==false)
@@ -11,7 +11,7 @@ function Done({ todo }) {
     <ul>
       {todos_C.length > 0 ? (
         todos_C.map((todo) => (
-          <li key={todo.todoID}>
+          <li key={todo._id}>
             <TodoItem todo={todo} />
           </li>
         ))
@@ -23,4 +23,4 @@ function Done({ todo }) {
   )
 }
 
-export default Done;
+export default NotDone;
