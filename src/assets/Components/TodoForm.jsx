@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useTodo } from "../Contexts";
+import { useTodo } from "../Contexts/TodoContext.js";
 import { Link, useNavigate } from "react-router-dom";
 
 function TodoForm() {
@@ -8,34 +8,21 @@ function TodoForm() {
    const Navigate=useNavigate()
    const [task,settask]=useState("")
 
-   const handleSubmit=(e)=>{
+   const handleSubmit=async (e)=>{
        e.preventDefault();
     const newTodo={
         todo:task,
         Completed:false,
         isEditable:true,
     }
-    async function fetchTodos() {
-    try {
-        const res =await fetch("http://localhost:5000/AllToDo",{
-            method:'POST',
-            headers:{
-                "Content-Type":"application/json",
-            },
-            body: JSON.stringify(newTodo)
-        },
-    )
-    const savedTodo = await res.json(); // ✅ Parse the response JSON
-      addTodo(savedTodo);
-       Navigate("/AllToDo");
-    settask("");
-    } catch (error) {
-        console.log("Error occured:"+error);
-    }
-}
-    fetchTodos();
+        addTodo(newTodo).then(()=>{
+        console.log("Todo added successfully");
+        Navigate("/AllToDo");
+        settask("");
+        });
+    } 
+
     
-}
     return (
         <form  className="flex" onSubmit={handleSubmit}>
             <input
